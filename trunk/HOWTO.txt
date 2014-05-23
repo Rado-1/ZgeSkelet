@@ -1,0 +1,45 @@
+ZgeSkelet Library - How to Compile
+==================================
+
+Note: By <homedir> is meant the directory where the ZgeSkelet sources are extracted on your computer.
+
+Before compiling the ZgeSkelet, you must checkout the Cal3D sources to <homedir>\cal3d directory. The Cal3D sources can be obtained from Subversion repository: svn://svn.gna.org/svn/cal3d/trunk/cal3d
+
+
+Compilation of ZgeSkelet to Windows DLL with MSVC
+-------------------------------------------------
+
+The ZgeSkelet DLL can be compiled with Microsoft Visual C++ 2008 (MSVC) or higher.
+
+1. Modify the Cal3D library: open (convert from previous version) the MSVC solution file \cal3d\cal3d.sln and change the following properties of the cal3d project:
+
+ - General / Configuration Type to StaticLibrary
+ - C/C++ / Code Generation / Runtime Library to Multi-threaded (/MT)
+
+2. Build the cal3d project with the Release configuration. The result will be placed to the <homedir>\cal3d\bin\Release\cal3d.lib file.
+
+3. Open <homedir>\vs2010\ZgeSkelet.sln or ZgeSkelet.vcxproj in MSVC.
+
+4. Set directories and library dependencies: ZgeSkelet requires an OpenGL library, so you need to include the path to the local header files to the C/C++ / General / Additional Include Directories. For instance, glew-1.10.0\include, if you use GLEW.
+
+5. Build the ZgeSkelet project resulting in <homedir>\lib\ZgeSkelet.dll file.
+
+
+Compilation of ZgeSkelet to Windows DLL with Code::Blocks
+---------------------------------------------------------
+
+1. Open the <homedir>\cb]\ZgeSkelet.workspace.
+
+2. Build the Cal3D project. The resulting library is placed to <homedir>cal3d\bin\Release\libcal3d.a file.
+
+3. Build the ZgeSkelet project resulting in <homedir>\lib\ZgeSkelet.dll file.
+
+
+Compilation of ZgeSkelet to Android Shared Library
+--------------------------------------------------
+
+The ZgeSkelet shared library (.so) is compiled with Android NDK which must be installed on your computer; see http://developer.android.com/tools/sdk/ndk/ for details.
+
+1. Move to the <homedir>/android/ folder.
+
+2. Run the ndk-build command of the Android NDK. The result are placed to the <homedir>/android/libs/<architecture>/libZgeSkelet.so files.

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Cal3D" />
+		<Option execution_dir="../cal3d/src" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release Win32">
+				<Option platforms="Windows;" />
+				<Option output="../cal3d/bin/Release/cal3d" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="Release" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-D_USRDLL" />
+					<Add option="-DCAL3D_EXPORTS" />
+					<Add directory="../cal3d/src" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../cal3d/src" />
+				</ResourceCompiler>
+			</Target>
+		</Build>
+		<Unit filename="../cal3d/src/cal3d/animation.cpp" />
+		<Unit filename="../cal3d/src/cal3d/animation.h" />
+		<Unit filename="../cal3d/src/cal3d/animation_action.cpp" />
+		<Unit filename="../cal3d/src/cal3d/animation_action.h" />
+		<Unit filename="../cal3d/src/cal3d/animation_cycle.cpp" />
+		<Unit filename="../cal3d/src/cal3d/animation_cycle.h" />
+		<Unit filename="../cal3d/src/cal3d/animcallback.h" />
+		<Unit filename="../cal3d/src/cal3d/bone.cpp" />
+		<Unit filename="../cal3d/src/cal3d/bone.h" />
+		<Unit filename="../cal3d/src/cal3d/buffersource.cpp" />
+		<Unit filename="../cal3d/src/cal3d/buffersource.h" />
+		<Unit filename="../cal3d/src/cal3d/cal3d.h" />
+		<Unit filename="../cal3d/src/cal3d/cal3d_wrapper.cpp" />
+		<Unit filename="../cal3d/src/cal3d/cal3d_wrapper.h" />
+		<Unit filename="../cal3d/src/cal3d/calxmlbindings.cpp" />
+		<Unit filename="../cal3d/src/cal3d/calxmlbindings.h" />
+		<Unit filename="../cal3d/src/cal3d/coreanimatedmorph.cpp" />
+		<Unit filename="../cal3d/src/cal3d/coreanimatedmorph.h" />
+		<Unit filename="../cal3d/src/cal3d/coreanimation.cpp" />
+		<Unit filename="../cal3d/src/cal3d/coreanimation.h" />
+		<Unit filename="../cal3d/src/cal3d/corebone.cpp" />
+		<Unit filename="../cal3d/src/cal3d/corebone.h" />
+		<Unit filename="../cal3d/src/cal3d/corekeyframe.cpp" />
+		<Unit filename="../cal3d/src/cal3d/corekeyframe.h" />
+		<Unit filename="../cal3d/src/cal3d/corematerial.cpp" />
+		<Unit filename="../cal3d/src/cal3d/corematerial.h" />
+		<Unit filename="../cal3d/src/cal3d/coremesh.cpp" />
+		<Unit filename="../cal3d/src/cal3d/coremesh.h" />
+		<Unit filename="../cal3d/src/cal3d/coremodel.cpp" />
+		<Unit filename="../cal3d/src/cal3d/coremodel.h" />
+		<Unit filename="../cal3d/src/cal3d/coremorphkeyframe.cpp" />
+		<Unit filename="../cal3d/src/cal3d/coremorphkeyframe.h" />
+		<Unit filename="../cal3d/src/cal3d/coremorphtrack.cpp" />
+		<Unit filename="../cal3d/src/cal3d/coremorphtrack.h" />
+		<Unit filename="../cal3d/src/cal3d/coreskeleton.cpp" />
+		<Unit filename="../cal3d/src/cal3d/coreskeleton.h" />
+		<Unit filename="../cal3d/src/cal3d/coresubmesh.cpp" />
+		<Unit filename="../cal3d/src/cal3d/coresubmesh.h" />
+		<Unit filename="../cal3d/src/cal3d/coresubmorphtarget.cpp" />
+		<Unit filename="../cal3d/src/cal3d/coresubmorphtarget.h" />
+		<Unit filename="../cal3d/src/cal3d/coretrack.cpp" />
+		<Unit filename="../cal3d/src/cal3d/coretrack.h" />
+		<Unit filename="../cal3d/src/cal3d/datasource.h" />
+		<Unit filename="../cal3d/src/cal3d/dualquaternion.cpp" />
+		<Unit filename="../cal3d/src/cal3d/dualquaternion.h" />
+		<Unit filename="../cal3d/src/cal3d/error.cpp" />
+		<Unit filename="../cal3d/src/cal3d/error.h" />
+		<Unit filename="../cal3d/src/cal3d/global.cpp" />
+		<Unit filename="../cal3d/src/cal3d/global.h" />
+		<Unit filename="../cal3d/src/cal3d/hardwaremodel.cpp" />
+		<Unit filename="../cal3d/src/cal3d/hardwaremodel.h" />
+		<Unit filename="../cal3d/src/cal3d/loader.cpp" />
+		<Unit filename="../cal3d/src/cal3d/loader.h" />
+		<Unit filename="../cal3d/src/cal3d/matrix.cpp" />
+		<Unit filename="../cal3d/src/cal3d/matrix.h" />
+		<Unit filename="../cal3d/src/cal3d/mesh.cpp" />
+		<Unit filename="../cal3d/src/cal3d/mesh.h" />
+		<Unit filename="../cal3d/src/cal3d/mixer.cpp" />
+		<Unit filename="../cal3d/src/cal3d/mixer.h" />
+		<Unit filename="../cal3d/src/cal3d/model.cpp" />
+		<Unit filename="../cal3d/src/cal3d/model.h" />
+		<Unit filename="../cal3d/src/cal3d/morphtargetmixer.cpp" />
+		<Unit filename="../cal3d/src/cal3d/morphtargetmixer.h" />
+		<Unit filename="../cal3d/src/cal3d/physique.cpp" />
+		<Unit filename="../cal3d/src/cal3d/physique.h" />
+		<Unit filename="../cal3d/src/cal3d/physiquedualquaternion.cpp" />
+		<Unit filename="../cal3d/src/cal3d/physiquedualquaternion.h" />
+		<Unit filename="../cal3d/src/cal3d/platform.cpp" />
+		<Unit filename="../cal3d/src/cal3d/platform.h" />
+		<Unit filename="../cal3d/src/cal3d/quaternion.cpp" />
+		<Unit filename="../cal3d/src/cal3d/quaternion.h" />
+		<Unit filename="../cal3d/src/cal3d/refcounted.h" />
+		<Unit filename="../cal3d/src/cal3d/refptr.h" />
+		<Unit filename="../cal3d/src/cal3d/renderer.cpp" />
+		<Unit filename="../cal3d/src/cal3d/renderer.h" />
+		<Unit filename="../cal3d/src/cal3d/resource.h" />
+		<Unit filename="../cal3d/src/cal3d/saver.cpp" />
+		<Unit filename="../cal3d/src/cal3d/saver.h" />
+		<Unit filename="../cal3d/src/cal3d/skeleton.cpp" />
+		<Unit filename="../cal3d/src/cal3d/skeleton.h" />
+		<Unit filename="../cal3d/src/cal3d/springsystem.cpp" />
+		<Unit filename="../cal3d/src/cal3d/springsystem.h" />
+		<Unit filename="../cal3d/src/cal3d/streamsource.cpp" />
+		<Unit filename="../cal3d/src/cal3d/streamsource.h" />
+		<Unit filename="../cal3d/src/cal3d/submesh.cpp" />
+		<Unit filename="../cal3d/src/cal3d/submesh.h" />
+		<Unit filename="../cal3d/src/cal3d/tinybind.cpp" />
+		<Unit filename="../cal3d/src/cal3d/tinybind.h" />
+		<Unit filename="../cal3d/src/cal3d/tinyxml.cpp" />
+		<Unit filename="../cal3d/src/cal3d/tinyxml.h" />
+		<Unit filename="../cal3d/src/cal3d/tinyxmlerror.cpp" />
+		<Unit filename="../cal3d/src/cal3d/tinyxmlparser.cpp" />
+		<Unit filename="../cal3d/src/cal3d/transform.h" />
+		<Unit filename="../cal3d/src/cal3d/vector.cpp" />
+		<Unit filename="../cal3d/src/cal3d/vector.h" />
+		<Unit filename="../cal3d/src/cal3d/xmlformat.cpp" />
+		<Unit filename="../cal3d/src/cal3d/xmlformat.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
