@@ -1,0 +1,28 @@
+# Usage in ZGameEditor project #
+
+  1. Open an ZGE project.
+  1. Include `ZExternalLibrary` component for ZgeSkelet library to the `OnLoaded` section of `ZApplication`. It can be found in the context menu _Add from library... > External libraries > Skeletal animation library_ of the Project tree.
+  1. Create core model(s) by the `zsk_CreateCoreModel()` function. This initialization phase is usually placed either to the `OnLoaded` section of `ZApplication` or `OnStart` section of `AppState` component.
+  1. Load core skeleton, animations, meshes and materials by `zsk_Load*()` functions. They can either be loaded from files directly, or from memory buffer (see the `zsk_Load*Buffer()` variants). Memory buffers are byte arrays which can either be preloaded and persistent (so they are included in the ZGE project "statically") or can be loaded dynamically by `File`+`FileAction` components. Memory buffers must be used if you build your application for Android; because `zsk_Load*()` functions are working only on Windows.
+  1. After loading materials, prepare the material threads and sets by `zsk_CreateCoreMaterialThread()` and `zsk_SetCoreMaterialId()` functions. They are used later to set or dynamically change "skins" of animated models. To understand material threads and sets, see the [Cal3D User's Guide](http://download.gna.org/cal3d/documentation/guide/x364.html) for details.
+  1. The natural way (but not the only one) of using instances of animated models is to wrap them to ZGE's `Model` components because they have similar life cycles. To create a model instance, use the `zsk_CreateModelInstance()` function. Then attach already loaded meshes to it by `zsk_AttachMesh()` and set the material set used for initial rendering of model by `zsk_AttachMesh()` function. All this procedure is usually placed to the `OnSpawn` section of the `Model` component.
+  1. To start cyclic animation use the `zsk_BlendAnimCycle()` function and to start action animation, use the `zsk_ExecuteAction()` function. If animations represent initial state of the model instance, they are placed to its `OnSpawn` section, and if animations should be changed on runtime, they are placed to the `OnUpdate` section of the corresponding `Model` component.
+  1. To change the mesh of the animated model in time, use the `zsk_Update()` function in the model's `OnUpdate` section. To achieve real-time animation, use `ZApplication.DeltaTime` property as value of the `deltaTime` argument. The simulated animation time can also be slower than real, e.g. `ZApplication.DeltaTime / 2`, or faster, e.g., `ZApplication.DeltaTime * 2`.
+  1. To render meshes of the animated model use the predefined functions which allow effective OpenGL rendering by means of Vertex Buffer Objects (VBOs).
+  1. For models rendered with no or one texture, use the `zsk_RenderModelInstance()` function placed in the `OnRender` section. Do not forget to set the used material by `UseMaterial` component. If materials of the animated model define different colors, you can set the `bSetColor` argument to 1 to make different colors visible on the rendered meshes. If the model uses texture, put it to the used material's (by `MaterialTexture}} component) and set the {{{bRenderTexture` argument to 1. See the sources of _ZgeSkeletDemo1.zgeproj_ project as an example of usage the `zsk_RenderModelInstance()` function.
+  1. For multi-textured models use the `zsk_RenderSubmesh()` function which allows to render a single sub-mesh (a part of the model's mesh drawn with a single material). To draw all of the model's sub-meshes, you must obtain their numbers for each of the model's mesh by means of the `zsk_GetSubmeshCount()` function. To query a material attached to a sub-mesh, use either the `zsk_GetSubmeshTexture()` function which returns a file name of the 1st of the material's textures, or use more effective `zsk_GetSubmeshUserMaterialId()` function which returns the material's user ID previously specified in corresponding call of the `zsk_LoadMaterial*()` function. See the sources of _ZgeSkeletDemo2.zgeproj_ project as an example of multi-textured skinned animated models.
+  1. When a model finishes its life, place the `zsk_DestroyModelInstance` to its `OnRemove` section.
+  1. When there will be no other instance of a given core model used (in a given game stage), call the `zsk_DestroyCoreModel()` function. This is usually done in the `OnClose` section of the `ZAppliaction` component, or `OnLeave` section of `AppState` component.
+
+For examples of usage ZgeSkelet in ZGE projects, download the demo applications from [here](http://googledrive.com/host/0BxwfQ8la88ouZElvWnZpLVhSdGs/).
+
+# Compiling Android application #
+
+  1. Compile your Android application, e.g., use _Project / Android: Build APK (debug)_ menu item.
+  1. Place _libZgeSkelet.so_ file to the _libs/armeabi_ folder. If the destination device supports the armv7a instruction set, it is recommended to use the library from _ZgeSkelet-armv7a.zip_ file. If not and you want to support wider range of devices, use the library from _ZgeSkelet-arm.zip_ file. They both work fine, but the version for armv7a achieves better performance.
+  1. Compile the APK again as in step 1.
+  1. Deploy the APK file to your Android device and install it in a standard way.
+
+_Note 1: The 1st and 2nd steps are required only when the application is built the first time. After that, a single compilation produces correct APK._
+
+_Note 2: Use the step 2 also in the case when updating to a newer version of the ZgeSkelet library._
