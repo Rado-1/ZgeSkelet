@@ -7,7 +7,7 @@ ZgeSkelet is free for commercial use and open source under the [Zlib License](ht
 Links:
 * Download the compiled versions of the library and demo projects from [here](http://googledrive.com/host/0BxwfQ8la88ouZElvWnZpLVhSdGs/).
 * For more information about usage ZgeSkelet library in ZGameEditor projects see [this page](../../wiki/How-to-Use).
-* For more information about how to compileZgeSkelet library see [this page](../../wiki/How-to-Build).
+* For more information about how to build ZgeSkelet library see [this page](../../wiki/How-to-Build).
 * Latest changes are listed in [version history](../../wiki/Version-History).
 * It is recommended to use the latest beta release of ZGameEditor downloaded from [here](http://www.zgameeditor.org/files/ZGameEditor_beta.zip).
 * Compiling of the ZgeSkelet uses the development version of Cal3D library downloaded from Subversion repository: svn://svn.gna.org/svn/cal3d/trunk/cal3d.
