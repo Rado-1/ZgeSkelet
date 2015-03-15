@@ -9,6 +9,7 @@ Links:
 * For more information about usage ZgeSkelet library in ZGameEditor projects see [this page](../../wiki/How-to-Use).
 * For more information about how to build ZgeSkelet library see [this page](../../wiki/How-to-Build).
 * Latest changes are listed in [version history](../../wiki/Version-History).
+* Related [forum discussion](http://www.emix8.org/forum/viewtopic.php?t=1106).
 * It is recommended to use the latest beta release of ZGameEditor downloaded from [here](http://www.zgameeditor.org/files/ZGameEditor_beta.zip).
 * Compiling of the ZgeSkelet uses the development version of Cal3D library downloaded from Subversion repository: svn://svn.gna.org/svn/cal3d/trunk/cal3d.
 
