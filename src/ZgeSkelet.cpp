@@ -35,11 +35,12 @@ typedef void* ptr;
 #define LOAD_BUFFER(fnc) coreModel->fnc(buffer)
 
 #ifdef _WIN32
-#define export extern "C" __declspec(dllexport)
+#define EXPORT extern "C" __declspec(dllexport)
 #else // ANDROID
-#define export extern "C"
+#define EXPORT "C"
 #define glColor4fv(a) glColor4f(a[0], a[1], a[2], a[3])
 #endif
+
 
 // Includes
 
@@ -59,39 +60,39 @@ std::string gTextureFilename;
 
 // Core model handling
 
-export void* zsk_CreateCoreModel(char* name) {
+EXPORT void* zsk_CreateCoreModel(char* name) {
 	return new CalCoreModel(std::string(name));
 }
 
-export void zsk_DestroyCoreModel(CalCoreModel* coreModel) {
+EXPORT void zsk_DestroyCoreModel(CalCoreModel* coreModel) {
 	delete coreModel;
 }
 
-export bool zsk_LoadSkeleton(CalCoreModel* coreModel, char* file) {
+EXPORT bool zsk_LoadSkeleton(CalCoreModel* coreModel, char* file) {
 	return LOAD_FILE(loadCoreSkeleton);
 }
 
-export bool zsk_LoadSkeletonBuffer(CalCoreModel* coreModel, void* buffer) {
+EXPORT bool zsk_LoadSkeletonBuffer(CalCoreModel* coreModel, void* buffer) {
 	return LOAD_BUFFER(loadCoreSkeleton);
 }
 
-export int zsk_LoadAnimation(CalCoreModel* coreModel, char* file) {
+EXPORT int zsk_LoadAnimation(CalCoreModel* coreModel, char* file) {
 	return LOAD_FILE(loadCoreAnimation);
 }
 
-export int zsk_LoadAnimationBuffer(CalCoreModel* coreModel, void* buffer) {
+EXPORT int zsk_LoadAnimationBuffer(CalCoreModel* coreModel, void* buffer) {
 	return LOAD_BUFFER(loadCoreAnimation);
 }
 
-export int zsk_LoadMesh(CalCoreModel* coreModel, char* file) {
+EXPORT int zsk_LoadMesh(CalCoreModel* coreModel, char* file) {
 	return LOAD_FILE(loadCoreMesh);
 }
 
-export int zsk_LoadMeshBuffer(CalCoreModel* coreModel, void* buffer) {
+EXPORT int zsk_LoadMeshBuffer(CalCoreModel* coreModel, void* buffer) {
 	return LOAD_BUFFER(loadCoreMesh);
 }
 
-export int zsk_LoadMaterial(CalCoreModel* coreModel, int userId, char* file) {
+EXPORT int zsk_LoadMaterial(CalCoreModel* coreModel, int userId, char* file) {
 	int materialId = LOAD_FILE(loadCoreMaterial);
 
 	if(materialId != ERROR)
@@ -100,7 +101,7 @@ export int zsk_LoadMaterial(CalCoreModel* coreModel, int userId, char* file) {
 	return materialId;
 }
 
-export int zsk_LoadMaterialBuffer(CalCoreModel* coreModel, int userId, void* buffer) {
+EXPORT int zsk_LoadMaterialBuffer(CalCoreModel* coreModel, int userId, void* buffer) {
 	int materialId = LOAD_BUFFER(loadCoreMaterial);
 
 	if(materialId != ERROR)
@@ -109,78 +110,78 @@ export int zsk_LoadMaterialBuffer(CalCoreModel* coreModel, int userId, void* buf
 	return materialId;
 }
 
-export void zsk_CreateCoreMaterialThread(CalCoreModel* coreModel, int threadId) {
+EXPORT void zsk_CreateCoreMaterialThread(CalCoreModel* coreModel, int threadId) {
 	coreModel->createCoreMaterialThread(threadId);
 }
 
-export void zsk_SetCoreMaterialId(CalCoreModel* coreModel,
+EXPORT void zsk_SetCoreMaterialId(CalCoreModel* coreModel,
 				int threadId, int setId, int materialId) {
 	coreModel->setCoreMaterialId(threadId, setId, materialId);
 }
 
 // Model instance handling
 
-export void* zsk_CreateModelInstance(CalCoreModel* coreModel) {
+EXPORT void* zsk_CreateModelInstance(CalCoreModel* coreModel) {
 	return new CalModel(coreModel);
 }
 
-export void zsk_DestroyModelInstance(CalModel* modelInst) {
+EXPORT void zsk_DestroyModelInstance(CalModel* modelInst) {
 	delete modelInst;
 }
 
-export int zsk_AttachMesh(CalModel* modelInst, int meshId) {
+EXPORT int zsk_AttachMesh(CalModel* modelInst, int meshId) {
 	return modelInst->attachMesh(meshId);
 }
 
-export int zsk_DetachMesh(CalModel* modelInst, int meshId) {
+EXPORT int zsk_DetachMesh(CalModel* modelInst, int meshId) {
 	return modelInst->detachMesh(meshId);
 }
 
-export void zsk_SetLevelOfDetail(CalModel* modelInst, float lod) {
+EXPORT void zsk_SetLevelOfDetail(CalModel* modelInst, float lod) {
 	modelInst->setLodLevel(lod);
 }
 
-export void zsk_BlendAnimCycle(CalModel* modelInst, int animationId, float weight, float delay) {
+EXPORT void zsk_BlendAnimCycle(CalModel* modelInst, int animationId, float weight, float delay) {
 	modelInst->getMixer()->blendCycle(animationId, weight, delay);
 }
 
-export void zsk_ClearAnimCycle(CalModel* modelInst, int animationId, float delay) {
+EXPORT void zsk_ClearAnimCycle(CalModel* modelInst, int animationId, float delay) {
 	modelInst->getMixer()->clearCycle(animationId, delay);
 }
 
-export void zsk_ExecuteAction(CalModel* modelInst, int animationId, float delayIn,
+EXPORT void zsk_ExecuteAction(CalModel* modelInst, int animationId, float delayIn,
 							float delayOut) {
 	modelInst->getMixer()->executeAction(animationId, delayIn, delayOut);
 }
 
-export void zsk_ExecuteActionExt(CalModel* modelInst, int animationId, float delayIn,
+EXPORT void zsk_ExecuteActionExt(CalModel* modelInst, int animationId, float delayIn,
 							float delayOut, float weightTarget, bool bAutoLock) {
 	modelInst->getMixer()->executeAction(animationId, delayIn, delayOut, weightTarget, bAutoLock);
 }
 
-export void zsk_Update(CalModel* modelInst, float deltaTime) {
+EXPORT void zsk_Update(CalModel* modelInst, float deltaTime) {
 	modelInst->update(deltaTime);
 }
 
-export void zsk_SetMaterialSet(CalModel* modelInst, int setId) {
+EXPORT void zsk_SetMaterialSet(CalModel* modelInst, int setId) {
 	modelInst->setMaterialSet(setId);
 }
 
-export void zsk_SetMeshMaterialSet(CalModel* modelInst, int meshId, int setId) {
+EXPORT void zsk_SetMeshMaterialSet(CalModel* modelInst, int meshId, int setId) {
 	modelInst->getMesh(meshId)->setMaterialSet(setId);
 }
 
 // Meshes and textures
 
-export int zsk_GetMeshCount(CalModel* modelInst) {
+EXPORT int zsk_GetMeshCount(CalModel* modelInst) {
 	return modelInst->getRenderer()->getMeshCount();
 }
 
-export int zsk_GetSubmeshCount(CalModel* modelInst, int meshId) {
+EXPORT int zsk_GetSubmeshCount(CalModel* modelInst, int meshId) {
 	return modelInst->getRenderer()->getSubmeshCount(meshId);
 }
 
-export const char* zsk_GetSubmeshTexture(CalModel* modelInst, int meshId, int submeshId) {
+EXPORT const char* zsk_GetSubmeshTexture(CalModel* modelInst, int meshId, int submeshId) {
 	CalCoreMaterial* material = modelInst->getCoreModel()->getCoreMaterial(
 		modelInst->getMesh(meshId)->getSubmesh(submeshId)->getCoreMaterialId());
 
@@ -189,7 +190,7 @@ export const char* zsk_GetSubmeshTexture(CalModel* modelInst, int meshId, int su
 	return gTextureFilename.c_str();
 }
 
-export int zsk_GetSubmeshUserMaterialId(CalModel* modelInst, int meshId, int submeshId) {
+EXPORT int zsk_GetSubmeshUserMaterialId(CalModel* modelInst, int meshId, int submeshId) {
 	CalCoreMaterial* material = modelInst->getCoreModel()->getCoreMaterial(
 		modelInst->getMesh(meshId)->getSubmesh(submeshId)->getCoreMaterialId());
 
@@ -198,7 +199,7 @@ export int zsk_GetSubmeshUserMaterialId(CalModel* modelInst, int meshId, int sub
 
 // Rendering
 
-export void zsk_RenderModelInstance(CalModel* modelInst, bool bSetColor, bool bRenderTexture) {
+EXPORT void zsk_RenderModelInstance(CalModel* modelInst, bool bSetColor, bool bRenderTexture) {
 
 	// get the renderer of the model
 	CalRenderer* renderer = modelInst->getRenderer();
@@ -311,7 +312,7 @@ export void zsk_RenderModelInstance(CalModel* modelInst, bool bSetColor, bool bR
 	renderer->endRendering();
 }
 
-export void zsk_RenderSubmesh(CalModel* modelInst,
+EXPORT void zsk_RenderSubmesh(CalModel* modelInst,
 				int meshId, int submeshId, bool bSetColor, bool bRenderTexture) {
 
 	// get the renderer of the model
